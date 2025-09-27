@@ -230,6 +230,26 @@ body {
   );
 }
 
+#two > .products {
+  flex: 1;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#two > .products > .product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#two > .products > .product > img {
+  width: 15vw;
+}
+
 /* three */
 
 #three {
@@ -444,12 +464,9 @@ body {
 
 /* media  */
 
-/* default (desktop): already a row, centered */
-/* #four > .products { display:flex; ... } stays as-is */
-
-/* ↓ Tablet & down */
 @media (max-width: 1300px) {
-  /* Let the section grow; still at least full viewport height */
+  /* four  */
+
   #four {
     height: auto;
     min-height: 100vh;
@@ -475,6 +492,31 @@ body {
     width: 260px; /* pick a size you like */
     height: 260px;
     object-fit: cover; /* or 'contain' if you don't want cropping */
+    display: block;
+  }
+
+  /* two  */
+  #two {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 6vh; /* background covers all items */
+  }
+
+  #two > .products {
+    margin-top: 4vh;
+    flex-direction: column; /* stack vertically */
+    gap: 4vh; /* spacing between items */
+    align-items: center; /* center horizontally */
+    padding: 2vh 0;
+  }
+
+  #two > .products > .product {
+    width: min(300px, 80vw); /* optional: constrain width */
+  }
+
+  #two > .products > .product > img {
+    width: 400px; /* fixed size for consistency */
+    object-fit: contain; /* or 'cover' if you prefer cropping */
     display: block;
   }
 }
