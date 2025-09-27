@@ -1,0 +1,480 @@
+:root {
+  --red: #ff5254;
+  --green: #a5ce3a;
+  --orange: #f89922;
+  --orange2: #ffc600;
+  --purple: #692b8b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Roboto Slab", serif;
+  overflow-x: hidden;
+}
+
+/* one  */
+
+#one {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--red);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+#one > img:nth-of-type(1) {
+  width: 576px;
+  height: 104px;
+
+  margin-top: 26px;
+  margin-bottom: 20px;
+}
+
+#one > img:nth-of-type(2) {
+  width: 1383px;
+  height: 625px;
+
+  position: absolute;
+  bottom: 35px;
+}
+
+#one > img:nth-of-type(3) {
+  margin-top: 10px;
+  height: 200px;
+  z-index: 1;
+}
+
+#one > .emote1 {
+  position: absolute;
+  bottom: 7vh;
+  right: 3vw;
+}
+
+#one > .emote2 {
+  position: absolute;
+  bottom: 17vh;
+  right: 4vw;
+}
+
+#one > .emote3 {
+  position: absolute;
+  bottom: 30vh;
+  right: 23vw;
+}
+
+#one > .emote4 {
+  position: absolute;
+  top: 26vh;
+  right: 30vw;
+}
+
+#one > .emote5 {
+  position: absolute;
+  top: 26vh;
+  left: 35vw;
+}
+
+#one > .emote6 {
+  position: absolute;
+  top: 26vh;
+  left: 18vw;
+}
+
+#one > .emote7 {
+  position: absolute;
+  top: 39vh;
+  left: 4vw;
+}
+
+#one > .emote8 {
+  position: absolute;
+  bottom: 35vh;
+  left: 1vw;
+}
+
+#one > .emote9 {
+  position: absolute;
+  bottom: 10vh;
+  left: 4vw;
+}
+
+#one > .navbar {
+  background-color: var(--purple);
+  height: 63px;
+  width: 920px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  position: relative;
+  z-index: 0;
+}
+
+#one > .navbar::before,
+#one > .navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--purple);
+}
+
+#one > .navbar::before {
+  left: -31px;
+  width: 31px;
+  clip-path: polygon(100% 0, 0 0, 31px 50%, 0 100%, 100% 100%);
+}
+
+/* right swallow-tail */
+#one > .navbar::after {
+  right: -31px;
+  width: 31px;
+  clip-path: polygon(
+    0 0,
+    /* flush with bar top */ 100% 0,
+    /* top-right tip */ 0 50%,
+    /* inward notch middle */ 100% 100%,
+    /* bottom-right tip */ 0 100% /* flush with bar bottom */
+  );
+}
+
+#one > .navbar > a {
+  color: white;
+  text-decoration: none;
+}
+
+/* two */
+
+#two {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--green);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#two > .text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  gap: 3vh;
+  padding-top: 25px;
+
+  color: white;
+}
+
+#two > .text > h1 {
+  font-size: 3rem;
+}
+
+#two > .text > p {
+  font-size: 1.5rem;
+}
+
+#two > .navbar {
+  background-color: var(--orange2);
+  color: var(--purple);
+
+  height: 63px;
+  width: 355px;
+  margin-top: 55px;
+  transform: rotate(-4deg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 0;
+}
+
+#two > .navbar::before,
+#two > .navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: var(--orange2);
+}
+
+#two > .navbar::before {
+  left: -31px;
+  width: 31px;
+  clip-path: polygon(100% 0, 0 0, 31px 50%, 0 100%, 100% 100%);
+}
+
+/* right swallow-tail */
+#two > .navbar::after {
+  right: -31px;
+  width: 31px;
+  clip-path: polygon(
+    0 0,
+    /* flush with bar top */ 100% 0,
+    /* top-right tip */ 0 50%,
+    /* inward notch middle */ 100% 100%,
+    /* bottom-right tip */ 0 100% /* flush with bar bottom */
+  );
+}
+
+/* three */
+
+#three {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--orange);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#three > .text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  gap: 3vh;
+  padding-top: 25px;
+
+  color: white;
+}
+
+#three > .text > h1 {
+  font-size: 3rem;
+}
+
+#three > .text > p {
+  font-size: 1.5rem;
+}
+
+#three > .navbar {
+  background-color: var(--purple);
+  color: var(--orange2);
+
+  height: 63px;
+  width: 481px;
+  margin-top: 55px;
+  transform: rotate(-4deg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 0;
+}
+
+#three > .navbar::before,
+#three > .navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: var(--purple);
+}
+
+#three > .navbar::before {
+  left: -31px;
+  width: 31px;
+  clip-path: polygon(100% 0, 0 0, 31px 50%, 0 100%, 100% 100%);
+}
+
+/* right swallow-tail */
+#three > .navbar::after {
+  right: -31px;
+  width: 31px;
+  clip-path: polygon(
+    0 0,
+    /* flush with bar top */ 100% 0,
+    /* top-right tip */ 0 50%,
+    /* inward notch middle */ 100% 100%,
+    /* bottom-right tip */ 0 100% /* flush with bar bottom */
+  );
+}
+
+#three > .navbar > p {
+  font-size: 1.2rem;
+}
+
+#three > .navbar > span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* four */
+
+#four {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--purple);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#four > .text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  gap: 3vh;
+  padding-top: 25px;
+
+  color: white;
+}
+
+#four > .text > h1 {
+  font-size: 3rem;
+}
+
+#four > .text > p {
+  font-size: 1.5rem;
+}
+
+#four > .navbar {
+  background-color: var(--orange2);
+  color: var(--purple);
+
+  height: 63px;
+  width: 481px;
+  margin-top: 55px;
+  transform: rotate(-4deg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 0;
+}
+
+#four > .navbar::before,
+#four > .navbar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: var(--orange2);
+}
+
+#four > .navbar::before {
+  left: -31px;
+  width: 31px;
+  clip-path: polygon(100% 0, 0 0, 31px 50%, 0 100%, 100% 100%);
+}
+
+/* right swallow-tail */
+#four > .navbar::after {
+  right: -31px;
+  width: 31px;
+  clip-path: polygon(
+    0 0,
+    /* flush with bar top */ 100% 0,
+    /* top-right tip */ 0 50%,
+    /* inward notch middle */ 100% 100%,
+    /* bottom-right tip */ 0 100% /* flush with bar bottom */
+  );
+}
+
+#four > .navbar > p {
+  font-size: 1.2rem;
+}
+
+#four > .navbar > span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#four > .products {
+  flex: 1;
+  width: 100%;
+  gap: 4vw;
+  padding-top: 3vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#four > .products > .product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: white;
+  font-weight: bold;
+
+  font-size: 1.2rem;
+}
+
+#four > .products > .product > img {
+}
+
+/* five */
+
+#five {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--red);
+}
+
+/* six */
+
+#six {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--orange);
+}
+
+/* media  */
+
+/* default (desktop): already a row, centered */
+/* #four > .products { display:flex; ... } stays as-is */
+
+/* ↓ Tablet & down */
+@media (max-width: 1300px) {
+  /* Let the section grow; still at least full viewport height */
+  #four {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 6vh; /* some breathing room below */
+  }
+
+  /* Stack products vertically */
+  #four > .products {
+    margin-top: 4vh;
+    flex-direction: column;
+    gap: 4vh; /* vertical spacing between items */
+    align-items: center; /* keep them centered */
+    padding: 2vh 0;
+  }
+
+  /* Optional: constrain card width for nicer look on narrow screens */
+  #four > .products > .product {
+    width: min(520px, 90vw);
+  }
+
+  /* Make all images same visual size */
+  #four > .products > .product > img {
+    width: 260px; /* pick a size you like */
+    height: 260px;
+    object-fit: cover; /* or 'contain' if you don't want cropping */
+    display: block;
+  }
+}
