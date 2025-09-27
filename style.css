@@ -287,7 +287,7 @@ body {
 
   height: 63px;
   width: 481px;
-  margin-top: 55px;
+  margin-top: 40px;
   transform: rotate(-4deg);
 
   display: flex;
@@ -333,6 +333,22 @@ body {
 #three > .navbar > span {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+#three > .products {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* gap: 40px; */
+  justify-items: center;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+#three > .products > img {
+  width: 20vw;
 }
 
 /* four */
@@ -518,5 +534,20 @@ body {
     width: 400px; /* fixed size for consistency */
     object-fit: contain; /* or 'cover' if you prefer cropping */
     display: block;
+  }
+
+  #three {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 6vh;
+  }
+
+  #three > .products {
+    grid-template-columns: 1fr;
+    gap: 20px; /* smaller gap for mobile */
+  }
+
+  #three > .products > img {
+    width: 75vw;
   }
 }
