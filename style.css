@@ -511,6 +511,114 @@ body {
   background-color: var(--orange);
 }
 
+#six > .text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  padding-top: 25px;
+
+  color: white;
+}
+
+#six > .text > h1 {
+  font-size: 3rem;
+}
+
+#six > .container {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 3vh;
+  gap: 7vh;
+}
+
+#six > .container > .container-2 {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3vh;
+}
+
+#six > .container > .container-2:nth-of-type(1) {
+  gap: 0;
+}
+
+#six > .container > .container-2 > p {
+  font-weight: bold;
+
+  font-size: 1.5rem;
+  margin-left: 5vw;
+}
+
+#six > .container > .container-2 > .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+
+  height: 6vh;
+  gap: 5vw;
+  font-size: 1.5rem;
+}
+
+#six > .container > .container-2:nth-of-type(1) > .text {
+  background-color: var(--red);
+  color: black;
+
+  transform: rotate(-3deg) scale(1.1);
+}
+
+#six > .container > .container-2:nth-of-type(2) > .text {
+  background-color: var(--purple);
+  color: white;
+
+  transform: rotate(1deg) scale(1.1);
+}
+
+#six > .container > .container-2:nth-of-type(3) > .text {
+  background-color: var(--green);
+  color: black;
+
+  transform: rotate(-1deg) scale(1.1);
+}
+
+#six > .contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  position: absolute;
+  right: 16vw;
+
+  margin-top: 6vh;
+}
+
+#six > .contact > h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+#six > .contact > p {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#six > .contact > .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#six > .contact > .social > img:nth-of-type(1) {
+  height: 105px;
+}
+
+#six > .contact > .social > img:nth-of-type(2) {
+  height: 90px;
+}
+
 /* media  */
 
 @media (max-width: 1300px) {
