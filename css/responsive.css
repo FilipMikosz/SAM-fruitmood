@@ -666,3 +666,47 @@
     object-fit: contain;
   }
 }
+
+@media (max-width: 576px), (pointer: coarse) {
+  /* hide decorative icons */
+  #six > img {
+    display: none !important;
+  }
+
+  /* let the section grow; no inner scrolling */
+  #six {
+    height: 125vh;
+    min-height: auto !important;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+  }
+
+  /* comfy padding so text doesn't touch edges */
+  #six > .container .container-2 {
+    padding: 14px 16px;
+  }
+
+  /* EXACTLY two columns, auto height */
+  #six > .container > .container-2 > .text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 in a row */
+    gap: 8px 20px; /* row / column gap */
+    justify-items: start;
+    align-items: start;
+    padding: 0 10px;
+
+    font-weight: 500;
+    font-size: clamp(14px, 4vw, 16px);
+    line-height: 1.35;
+
+    /* remove any fixed height! */
+    height: auto;
+  }
+
+  /* make long names wrap inside their cells */
+  #six > .container > .container-2 > .text p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
