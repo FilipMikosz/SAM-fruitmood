@@ -17,7 +17,6 @@
   /* emocje w smaku  */
   #one > img:nth-of-type(3) {
     height: 150px;
-
     position: absolute;
     bottom: 5vh;
   }
@@ -216,11 +215,11 @@
   }
 }
 
-/* #two  */
+/* =========================
+   INTERACTIONS – #TWO
+   ========================= */
 
-/* ---------- #TWO: poprawki bazowe (desktop/tablet) ---------- */
-
-/* Płynniejsze skalowanie produktu + navbar */
+/* desktop/tablet interactions */
 #two > .navbar {
   transition: transform 0.28s ease;
   transform-origin: center;
@@ -238,28 +237,25 @@
   transition: transform 0.28s ease;
   will-change: transform;
   transform-origin: center;
-  isolation: isolate; /* żeby podnoszone karty nie „przebijały” cieni */
+  isolation: isolate;
 }
 
 #two > .products .product:hover {
   transform: scale(1.2);
 }
 
-/* skaluj navbar gdy jakiś produkt jest hoverowany */
+/* scale navbar when any product hovered */
 #two:has(.products .product:hover) > .navbar {
   transform: scale(1.2);
 }
 
-/* Zapobiegaj obcinaniu skalowanych elementów */
+/* prevent clipping */
 #two {
   overflow: visible;
 }
 
-/* ---------- TELEFONY / EKRANY DOTYKOWE ---------- */
-/* Zamiast hover wykorzystujemy :active (tap-hold) i
-   dostosowujemy typografię/układ dla małych ekranów */
+/* phones */
 @media (max-width: 576px), (pointer: coarse) {
-  /* Sekcja: spacing */
   #two {
     height: auto;
     min-height: 100vh;
@@ -267,7 +263,6 @@
     box-sizing: border-box;
   }
 
-  /* WYŚRODKOWANY TEKST */
   #two > .text {
     gap: 12px;
     padding-top: 0;
@@ -288,9 +283,9 @@
     margin: 0;
   }
 
-  /* PASEK „100% OWOCÓW” — ten sam wygląd co desktop, tylko mniejszy */
+  /* ribbon like desktop, just smaller */
   #two > .navbar {
-    width: 240px; /* mniejsza, ale desktopowy styl */
+    width: 240px;
     height: 48px;
     margin-top: 20px;
     padding: 0 10px;
@@ -299,16 +294,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center; /* nagłówek centralnie */
+    text-align: center;
   }
 
-  /* Kolce – włączone i przeskalowane */
   #two > .navbar::before,
   #two > .navbar::after {
     display: block;
-    background-color: inherit; /* ten sam kolor co pasek */
+    background-color: inherit;
   }
-
   #two > .navbar::before {
     left: -20px;
     width: 20px;
@@ -326,7 +319,6 @@
     white-space: nowrap;
   }
 
-  /* Siatka produktów: 2 kolumny (1 kolumna na bardzo wąskich) */
   #two > .products {
     width: 100%;
     margin-top: 18px;
@@ -336,7 +328,6 @@
     justify-items: center;
     align-items: start;
   }
-
   @media (max-width: 380px) {
     #two > .products {
       grid-template-columns: 1fr;
@@ -349,7 +340,6 @@
     padding: 8px 6px;
     border-radius: 12px;
   }
-
   #two > .products > .product > img {
     width: 100%;
     max-width: 260px;
@@ -358,23 +348,21 @@
     display: block;
   }
 
-  /* Telefony: delikatniejsza animacja na dotyk, bez hover */
+  /* tap effect */
   #two > .products .product:hover {
     transform: none;
   }
-
   #two > .products .product:active {
     transform: scale(1.06);
     transition-duration: 0.18s;
   }
-
   #two:has(.products .product:active) > .navbar {
     transform: rotate(-4deg) scale(1.06);
     transition-duration: 0.18s;
   }
 }
 
-/* ---------- Tablet poziomo (opcjonalne dopieszczenie) ---------- */
+/* tablet polish */
 @media (min-width: 577px) and (max-width: 992px) {
   #two {
     height: auto;
@@ -387,5 +375,294 @@
   }
   #two > .products > .product > img {
     width: min(28vw, 320px);
+  }
+}
+
+/* =========================
+   MOBILE: #THREE (with overlap fix)
+   ========================= */
+
+/* stop #two ribbon overlapping #three */
+@media (max-width: 576px), (pointer: coarse) {
+  #two > .navbar {
+    z-index: 0;
+  }
+  #two {
+    overflow: hidden;
+  }
+  #three {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
+}
+
+@media (max-width: 576px), (pointer: coarse) {
+  #three {
+    height: auto;
+    min-height: 100vh;
+    padding: 18px 16px 28px;
+    box-sizing: border-box;
+  }
+
+  #three > .text {
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  #three > .text > h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.2;
+    margin: 0;
+  }
+  #three > .text > p {
+    font-size: clamp(14px, 4.5vw, 16px);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* purple ribbon same proportions as yellow one */
+  #three > .navbar {
+    width: 240px;
+    height: 48px;
+    margin-top: 20px;
+    padding: 0 50px;
+    transform: rotate(-4deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    line-height: 1;
+  }
+  #three > .navbar::before,
+  #three > .navbar::after {
+    display: block;
+    background-color: inherit;
+  }
+  #three > .navbar::before {
+    left: -18px;
+    width: 18px;
+    clip-path: polygon(100% 0, 0 0, 18px 50%, 0 100%, 100% 100%);
+  }
+  #three > .navbar::after {
+    right: -18px;
+    width: 18px;
+    clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
+  }
+
+  #three > .navbar span,
+  #three > .navbar p {
+    margin: 0;
+    white-space: nowrap;
+    font-size: clamp(14px, 4vw, 16px);
+  }
+  #three > .navbar span {
+    font-weight: 700;
+  }
+
+  /* products: 2 per row (1 on very small) */
+  #three > .products {
+    width: 100%;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    justify-items: center;
+  }
+  @media (max-width: 380px) {
+    #three > .products {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #three > .products > img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.18s ease;
+  }
+  #three > .products > img:active {
+    transform: scale(1.06);
+  }
+  #three:has(.products > img:active) > .navbar {
+    transform: rotate(-4deg) scale(1.06);
+  }
+}
+
+/* =========================
+   INTERACTIONS – #FOUR
+   ========================= */
+
+/* desktop/tablet interactions like #two */
+#four > .navbar {
+  transition: transform 0.28s ease;
+  transform-origin: center;
+  z-index: 2;
+  will-change: transform;
+}
+
+#four > .products .product {
+  transition: transform 0.28s ease;
+  will-change: transform;
+  transform-origin: center;
+}
+
+#four > .products .product:hover {
+  transform: scale(1.2);
+}
+#four:has(.products .product:hover) > .navbar {
+  transform: scale(1.2);
+}
+
+/* phones */
+@media (max-width: 576px), (pointer: coarse) {
+  #four {
+    height: auto;
+    min-height: 100vh;
+    padding: 18px 16px 28px;
+    box-sizing: border-box;
+  }
+
+  #four > .text {
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px;
+  }
+  #four > .text > h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.2;
+    margin: 0;
+  }
+  #four > .text > p {
+    font-size: clamp(14px, 4.5vw, 16px);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ribbon like desktop, smaller with “kolce” */
+  #four > .navbar {
+    width: 260px;
+    min-height: 48px;
+    margin-top: 18px;
+    padding: 0 40px;
+    transform: rotate(-4deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    line-height: 1;
+  }
+  #four > .navbar::before,
+  #four > .navbar::after {
+    display: block;
+    background-color: inherit;
+  }
+  #four > .navbar::before {
+    left: -18px;
+    width: 18px;
+    clip-path: polygon(100% 0, 0 0, 18px 50%, 0 100%, 100% 100%);
+  }
+  #four > .navbar::after {
+    right: -18px;
+    width: 18px;
+    clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
+  }
+
+  #four > .navbar span,
+  #four > .navbar p {
+    margin: 0;
+    white-space: nowrap;
+    font-size: clamp(14px, 4vw, 16px);
+  }
+  #four > .navbar span {
+    font-weight: 700;
+  }
+
+  /* products: one per row (cards) */
+  #four > .products {
+    width: 100%;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+  }
+
+  #four > .products > .product {
+    width: 100%;
+    max-width: 520px;
+    padding: 8px 6px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  #four > .products > .product > img {
+    width: min(260px, 80vw);
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-inline: auto;
+  }
+  #four > .products > .product > p {
+    margin: 8px 0 0;
+    font-size: clamp(13px, 3.8vw, 15px);
+    line-height: 1.4;
+  }
+
+  /* tap effect */
+  #four > .products .product:hover {
+    transform: none;
+  }
+  #four > .products .product:active {
+    transform: scale(1.06);
+    transition-duration: 0.18s;
+  }
+  #four:has(.products .product:active) > .navbar {
+    transform: rotate(-4deg) scale(1.06);
+    transition-duration: 0.18s;
+  }
+}
+
+/* =========================
+   MOBILE: #FIVE (one image per row)
+   ========================= */
+@media (max-width: 576px), (pointer: coarse) {
+  #five {
+    height: auto;
+    min-height: 100vh;
+    padding: 18px 12px 28px;
+    box-sizing: border-box;
+  }
+
+  #five > .text {
+    text-align: center;
+    align-items: center;
+    padding: 0 8px;
+  }
+  #five > .text > h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.2;
+    margin: 0 0 10px;
+  }
+
+  /* strictly one image per row */
+  #five > .products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr; /* one per row */
+    gap: 16px;
+    justify-items: center;
+  }
+
+  #five > .products > img {
+    width: min(560px, 92vw);
+    height: auto;
+    display: block;
+    object-fit: contain;
   }
 }
