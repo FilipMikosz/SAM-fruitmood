@@ -325,6 +325,31 @@ body {
   width: 15vw;
 }
 
+#two > .navbar {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  z-index: 2; /* stays above if needed */
+}
+
+#two > .products .product {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+#two > .products .product:hover {
+  transform: scale(1.2);
+}
+
+/* scale navbar when any product (or its img) is hovered */
+#two:has(.products .product:hover),
+#two:has(.products .product img:hover) {
+  /* no styles here, we only use it to target navbar next */
+}
+#two:has(.products .product:hover) > .navbar,
+#two:has(.products .product img:hover) > .navbar {
+  transform: scale(1.2);
+}
+
 /* three */
 
 #three {
@@ -424,6 +449,26 @@ body {
 
 #three > .products > img {
   width: 20vw;
+}
+
+#three > .navbar {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  z-index: 2;
+}
+
+#three > .products img {
+  transition: transform 0.3s ease;
+  display: block; /* avoids inline-gap nits */
+  will-change: transform;
+}
+#three > .products img:hover {
+  transform: scale(1.2);
+}
+
+/* scale navbar when any product image is hovered */
+#three:has(.products img:hover) > .navbar {
+  transform: scale(1.2);
 }
 
 /* four */
@@ -535,6 +580,34 @@ body {
 }
 
 #four > .products > .product > img {
+}
+
+#four > .navbar {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  z-index: 2;
+}
+
+#four > .products .product {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  /* optional: make the whole card a hover target */
+  cursor: pointer;
+}
+#four > .products .product:hover {
+  transform: scale(1.2);
+}
+
+/* scale navbar when any card or its img/text is hovered */
+#four:has(.products .product:hover),
+#four:has(.products .product img:hover),
+#four:has(.products .product p:hover) {
+  /* trigger */
+}
+#four:has(.products .product:hover) > .navbar,
+#four:has(.products .product img:hover) > .navbar,
+#four:has(.products .product p:hover) > .navbar {
+  transform: scale(1.2);
 }
 
 /* five */
