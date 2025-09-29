@@ -8,18 +8,30 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
   </head>
   <body>
     <section id="one">
       <img src="./images/section1/FRUITMOOD_logo.png" alt="fruit mood logo" />
+
       <div class="navbar">
         <a href="#one">Home</a>
-        <a href="#two">Produkty</a>
+
+        <div class="dropdown">
+          <a href="#two" class="dropbtn">Produkty</a>
+          <div class="dropdown-content">
+            <a href="#two">Przekąski owocowe</a>
+            <a href="#two">Batoniki owocowe</a>
+            <a href="#two">Smoothie Bites</a>
+          </div>
+        </div>
+
         <a href="#five">Proces przygotowania</a>
         <a href="#six">Gdzie kupić</a>
         <a href="#six">Kontakt</a>
       </div>
+
       <div class="mobile-navbar">
         <div class="container-hamburger" onclick="myFunction(this)">
           <div class="bar1"></div>
@@ -27,6 +39,7 @@
           <div class="bar3"></div>
         </div>
       </div>
+
       <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
         <div class="mobile-menu__panel">
           <a href="#one" class="mobile-link">Home</a>
@@ -36,8 +49,10 @@
           <a href="#six" class="mobile-link">Kontakt</a>
         </div>
       </nav>
+
       <img src="./images/section1/mamadziecko.png" alt="mama i dziecko" />
       <img src="./images/section1/smaku1.png" alt="emocje w smaku" />
+
       <img class="emote1 emote" src="./images/section1/icons/1.svg" />
       <img class="emote2 emote" src="./images/section1/icons/2.png" />
       <img class="emote3 emote" src="./images/section1/icons/3.png" />
@@ -48,6 +63,7 @@
       <img class="emote8 emote" src="./images/section1/icons/8.png" />
       <img class="emote9 emote" src="./images/section1/icons/9.png" />
     </section>
+
     <section id="two">
       <div class="text">
         <h1>Przekąski owocowe FRUIT MOOD</h1>

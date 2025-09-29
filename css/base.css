@@ -52,6 +52,11 @@ body {
   margin-top: 10px;
   height: 200px;
   z-index: 1;
+  transition: transform 0.3s ease; /* ładne płynne przejście */
+}
+
+#one > img:nth-of-type(3):hover {
+  transform: scale(1.2); /* powiększenie o 20% */
 }
 
 #one > .emote1 {
@@ -152,6 +157,76 @@ body {
 #one > .navbar > a {
   color: white;
   text-decoration: none;
+}
+
+/* Make the navbar sit above the big images */
+#one > .navbar {
+  position: relative;
+  z-index: 100; /* higher than any images below */
+  overflow: visible; /* allow dropdown to overflow the bar */
+}
+
+/* Trigger area = whole purple block */
+#one > .navbar .dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+/* Button fills the block */
+#one > .navbar .dropbtn {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 63px; /* same as navbar height */
+}
+
+/* Submenu: above everything, no hover gap, nice appear */
+#one > .navbar .dropdown-content {
+  position: absolute;
+  top: calc(100% - 1px); /* overlap 1px to remove the gap */
+  left: 0;
+  min-width: 220px;
+  background: var(--purple);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  /* visibility animation (no layout jump) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+
+  /* make sure it’s on top of images even if they’re positioned */
+  z-index: 9999;
+
+  /* keep mouse events off while hidden to avoid flicker */
+  pointer-events: none;
+}
+
+/* submenu items */
+#one > .navbar .dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+}
+#one > .navbar .dropdown-content a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Show when hovering the whole block OR the panel itself */
+#one > .navbar .dropdown:hover .dropdown-content,
+#one > .navbar .dropdown .dropdown-content:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s; /* make it appear immediately */
+  pointer-events: auto;
 }
 
 /* two */
@@ -685,222 +760,4 @@ body {
 
 .mobile-navbar {
   display: none;
-}
-
-/* media */
-
-/* Mobile (iPhone) → 1 per row */
-@media (max-width: 576px) {
-  .mobile-navbar {
-    display: flex;
-  }
-  #one > .emote {
-    display: none;
-  }
-
-  /* fruit mood logo  */
-  #one > img:nth-of-type(1) {
-    width: 450px;
-  }
-
-  /* emocje w smaku  */
-  #one > img:nth-of-type(3) {
-    height: 150px;
-
-    position: absolute;
-    bottom: 5vh;
-  }
-  /* main photo  */
-  #one > img:nth-of-type(2) {
-    display: none;
-    position: absolute;
-    bottom: 35px;
-  }
-
-  #one > .navbar {
-    display: none;
-  }
-
-  #five {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 6vh;
-  }
-
-  #five > .products {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 1300px) {
-  /* two  */
-  #two {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 6vh;
-  }
-
-  #two > .products {
-    margin-top: 4vh;
-    flex-direction: column;
-    gap: 4vh;
-    align-items: center;
-    padding: 2vh 0;
-  }
-
-  #two > .products > .product {
-    width: min(300px, 80vw);
-  }
-
-  #two > .products > .product > img {
-    width: 250px;
-    object-fit: contain;
-    display: block;
-  }
-
-  /* three */
-
-  #three {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 6vh;
-  }
-
-  #three > .products {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  #three > .products > img {
-    width: 75vw;
-  }
-
-  /* four  */
-
-  #four {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 6vh;
-  }
-
-  #four > .products {
-    margin-top: 4vh;
-    flex-direction: column;
-    gap: 4vh;
-    align-items: center;
-    padding: 2vh 0;
-  }
-
-  #four > .products > .product {
-    width: min(520px, 90vw);
-  }
-
-  #four > .products > .product > img {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-  }
-}
-
-@media (max-width: 1100px) {
-  #five {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 6vh;
-  }
-
-  #five > .products {
-    grid-template-columns: repeat(2, minmax(220px, 1fr));
-  }
-}
-
-/* hamburger icon  */
-
-.container-hamburger {
-  display: inline-block;
-  cursor: pointer;
-}
-
-.bar1,
-.bar2,
-.bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: #333;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-.change .bar1 {
-  transform: translate(0, 11px) rotate(-45deg);
-}
-
-.change .bar2 {
-  opacity: 0;
-}
-
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
-}
-
-/* Prevent background scroll when menu open */
-.no-scroll {
-  overflow: hidden;
-}
-
-/* Base mobile menu (hidden by default) */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* backdrop */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms ease;
-  z-index: 999; /* above everything */
-}
-
-.mobile-menu__panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: var(--orange);
-  color: white;
-  padding: 18px 20px 12px;
-  transform: translateY(-100%);
-  transition: transform 220ms ease;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-}
-
-/* Links */
-.mobile-link {
-  display: block;
-  padding: 14px 10px;
-  text-decoration: none;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  border-radius: 10px;
-}
-.mobile-link:active {
-  transform: translateY(1px);
-}
-
-/* Show state */
-.mobile-menu.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-.mobile-menu.open .mobile-menu__panel {
-  transform: translateY(0);
-}
-
-/* Only show/enable on phones */
-@media (min-width: 577px) {
-  .mobile-menu {
-    display: none;
-  }
 }
