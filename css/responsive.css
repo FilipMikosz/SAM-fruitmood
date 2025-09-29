@@ -176,7 +176,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: var(--orange);
+  background: var(--purple);
   color: white;
   padding: 18px 20px 12px;
   transform: translateY(-100%);
@@ -213,5 +213,179 @@
 @media (min-width: 577px) {
   .mobile-menu {
     display: none;
+  }
+}
+
+/* #two  */
+
+/* ---------- #TWO: poprawki bazowe (desktop/tablet) ---------- */
+
+/* Płynniejsze skalowanie produktu + navbar */
+#two > .navbar {
+  transition: transform 0.28s ease;
+  transform-origin: center;
+  z-index: 2;
+  will-change: transform;
+}
+
+#two > .products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+#two > .products .product {
+  transition: transform 0.28s ease;
+  will-change: transform;
+  transform-origin: center;
+  isolation: isolate; /* żeby podnoszone karty nie „przebijały” cieni */
+}
+
+#two > .products .product:hover {
+  transform: scale(1.2);
+}
+
+/* skaluj navbar gdy jakiś produkt jest hoverowany */
+#two:has(.products .product:hover) > .navbar {
+  transform: scale(1.2);
+}
+
+/* Zapobiegaj obcinaniu skalowanych elementów */
+#two {
+  overflow: visible;
+}
+
+/* ---------- TELEFONY / EKRANY DOTYKOWE ---------- */
+/* Zamiast hover wykorzystujemy :active (tap-hold) i
+   dostosowujemy typografię/układ dla małych ekranów */
+@media (max-width: 576px), (pointer: coarse) {
+  /* Sekcja: spacing */
+  #two {
+    height: auto;
+    min-height: 100vh;
+    padding: 18px 16px 28px;
+    box-sizing: border-box;
+  }
+
+  /* WYŚRODKOWANY TEKST */
+  #two > .text {
+    gap: 12px;
+    padding-top: 0;
+    padding-inline: 8px;
+    text-align: center;
+    align-items: center;
+  }
+
+  #two > .text > h1 {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #two > .text > p {
+    font-size: clamp(14px, 4.5vw, 16px);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* PASEK „100% OWOCÓW” — ten sam wygląd co desktop, tylko mniejszy */
+  #two > .navbar {
+    width: 240px; /* mniejsza, ale desktopowy styl */
+    height: 48px;
+    margin-top: 20px;
+    padding: 0 10px;
+    transform: rotate(-4deg);
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* nagłówek centralnie */
+  }
+
+  /* Kolce – włączone i przeskalowane */
+  #two > .navbar::before,
+  #two > .navbar::after {
+    display: block;
+    background-color: inherit; /* ten sam kolor co pasek */
+  }
+
+  #two > .navbar::before {
+    left: -20px;
+    width: 20px;
+    clip-path: polygon(100% 0, 0 0, 20px 50%, 0 100%, 100% 100%);
+  }
+  #two > .navbar::after {
+    right: -20px;
+    width: 20px;
+    clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
+  }
+
+  #two > .navbar h1 {
+    font-size: clamp(14px, 4vw, 16px);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  /* Siatka produktów: 2 kolumny (1 kolumna na bardzo wąskich) */
+  #two > .products {
+    width: 100%;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    justify-items: center;
+    align-items: start;
+  }
+
+  @media (max-width: 380px) {
+    #two > .products {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #two > .products > .product {
+    width: 100%;
+    max-width: 260px;
+    padding: 8px 6px;
+    border-radius: 12px;
+  }
+
+  #two > .products > .product > img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Telefony: delikatniejsza animacja na dotyk, bez hover */
+  #two > .products .product:hover {
+    transform: none;
+  }
+
+  #two > .products .product:active {
+    transform: scale(1.06);
+    transition-duration: 0.18s;
+  }
+
+  #two:has(.products .product:active) > .navbar {
+    transform: rotate(-4deg) scale(1.06);
+    transition-duration: 0.18s;
+  }
+}
+
+/* ---------- Tablet poziomo (opcjonalne dopieszczenie) ---------- */
+@media (min-width: 577px) and (max-width: 992px) {
+  #two {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+  #two > .products {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  #two > .products > .product > img {
+    width: min(28vw, 320px);
   }
 }
