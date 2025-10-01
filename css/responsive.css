@@ -1,5 +1,15 @@
 /* media */
 
+@media (max-width: 1750px) {
+  #one > img:nth-of-type(3) {
+    position: absolute;
+    height: 140px;
+    top: 21vh;
+    z-index: 100;
+  }
+}
+
+/* Mobile (iPhone) → 1 per row */
 /* Mobile (iPhone) → 1 per row */
 @media (max-width: 576px) {
   .mobile-navbar {
@@ -14,17 +24,32 @@
     width: 450px;
   }
 
-  /* emocje w smaku  */
+  /* "EMOCJE W SMAKU" */
   #one > img:nth-of-type(3) {
     height: 150px;
     position: absolute;
     bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
   }
-  /* main photo  */
+
+  /* main photo: mama i dziecko — visible & pinned to bottom */
+  #one {
+    padding-bottom: 24px; /* small breathing room under the photo */
+  }
   #one > img:nth-of-type(2) {
-    display: none;
+    /* was: display:none; */
+    display: block;
     position: absolute;
-    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(520px, 92vw); /* responsive width */
+    max-height: 42vh; /* prevents it from getting too tall */
+    height: auto;
+    object-fit: contain;
+    z-index: 1; /* under the “EMOCJE” graphic */
+    pointer-events: none; /* purely decorative */
   }
 
   #one > .navbar {
@@ -36,7 +61,6 @@
     min-height: 100vh;
     padding-bottom: 6vh;
   }
-
   #five > .products {
     grid-template-columns: 1fr;
   }
