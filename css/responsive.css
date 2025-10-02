@@ -9,6 +9,15 @@
   }
 }
 
+@media (max-width: 1500px) {
+  #one > .emote {
+    display: none;
+  }
+
+  #six > .emote {
+    display: none;
+  }
+}
 /* Mobile (iPhone) → 1 per row */
 /* Mobile (iPhone) → 1 per row */
 @media (max-width: 576px) {
@@ -39,16 +48,15 @@
     padding-bottom: 24px; /* small breathing room under the photo */
   }
   #one > img:nth-of-type(2) {
-    /* was: display:none; */
     display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(520px, 92vw); /* responsive width */
+    position: relative; /* no need for absolute */
+    width: 100vw; /* perfectly fills the viewport width */
     max-height: 42vh; /* prevents it from getting too tall */
     height: auto;
     object-fit: contain;
-    z-index: 1; /* under the “EMOCJE” graphic */
+    /* margin: 0 auto;  */
+    margin-top: 30vh;
+    z-index: 1; /* stays under the “EMOCJE” graphic */
     pointer-events: none; /* purely decorative */
   }
 
@@ -732,5 +740,20 @@
     margin: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+}
+
+/* No animation/transition for “EMOCJE W SMAKU” below laptop */
+@media (max-width: 992px), (pointer: coarse) {
+  #one > img:nth-of-type(3) {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  /* Lock hover/active so nothing wiggles */
+  #one > img:nth-of-type(3):hover,
+  #one > img:nth-of-type(3):active {
+    transform: translateX(-50%) !important; /* keep current centered state */
   }
 }
