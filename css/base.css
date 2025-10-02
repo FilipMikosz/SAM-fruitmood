@@ -64,49 +64,41 @@ body {
   bottom: 7vh;
   right: 3vw;
 }
-
 #one > .emote2 {
   position: absolute;
   bottom: 17vh;
   right: 4vw;
 }
-
 #one > .emote3 {
   position: absolute;
   bottom: 30vh;
   right: 23vw;
 }
-
 #one > .emote4 {
   position: absolute;
   top: 26vh;
   right: 30vw;
 }
-
 #one > .emote5 {
   position: absolute;
   top: 26vh;
   left: 35vw;
 }
-
 #one > .emote6 {
   position: absolute;
   top: 26vh;
   left: 18vw;
 }
-
 #one > .emote7 {
   position: absolute;
   top: 39vh;
   left: 4vw;
 }
-
 #one > .emote8 {
   position: absolute;
   bottom: 35vh;
   left: 1vw;
 }
-
 #one > .emote9 {
   position: absolute;
   bottom: 10vh;
@@ -145,13 +137,7 @@ body {
 #one > .navbar::after {
   right: -31px;
   width: 31px;
-  clip-path: polygon(
-    0 0,
-    /* flush with bar top */ 100% 0,
-    /* top-right tip */ 0 50%,
-    /* inward notch middle */ 100% 100%,
-    /* bottom-right tip */ 0 100% /* flush with bar bottom */
-  );
+  clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
 }
 
 #one > .navbar > a {
@@ -255,7 +241,6 @@ body {
 #two > .text > h1 {
   font-size: 3rem;
 }
-
 #two > .text > p {
   font-size: 1.5rem;
 }
@@ -263,16 +248,13 @@ body {
 #two > .navbar {
   background-color: var(--orange2);
   color: var(--purple);
-
   height: 63px;
   width: 355px;
   margin-top: 55px;
-  transform: rotate(-4deg);
-
+  transform: rotate(-4deg) scale(var(--ribbonScale, 3)) !important; /* ← important */
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
   z-index: 0;
 }
@@ -296,13 +278,7 @@ body {
 #two > .navbar::after {
   right: -31px;
   width: 31px;
-  clip-path: polygon(
-    0 0,
-    /* flush with bar top */ 100% 0,
-    /* top-right tip */ 0 50%,
-    /* inward notch middle */ 100% 100%,
-    /* bottom-right tip */ 0 100% /* flush with bar bottom */
-  );
+  clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
 }
 
 #two > .products {
@@ -319,34 +295,15 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 #two > .products > .product > img {
   width: 15vw;
 }
-
-#two > .navbar {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  z-index: 2; /* stays above if needed */
-}
-
-#two > .products .product {
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
-
-#two > .products .product:hover {
-  transform: scale(1.2);
-}
-
-/* scale navbar when any product (or its img) is hovered */
-#two:has(.products .product:hover),
-#two:has(.products .product img:hover) {
-  /* no styles here, we only use it to target navbar next */
-}
-#two:has(.products .product:hover) > .navbar,
-#two:has(.products .product img:hover) > .navbar {
+#two > .products > .product:hover {
   transform: scale(1.2);
 }
 
@@ -376,7 +333,6 @@ body {
 #three > .text > h1 {
   font-size: 3rem;
 }
-
 #three > .text > p {
   font-size: 1.5rem;
 }
@@ -388,8 +344,7 @@ body {
   height: 63px;
   width: 481px;
   margin-top: 40px;
-  transform: rotate(-4deg);
-
+  transform: rotate(-4deg) scale(var(--ribbonScale, 1)); /* ⬅ */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -417,19 +372,12 @@ body {
 #three > .navbar::after {
   right: -31px;
   width: 31px;
-  clip-path: polygon(
-    0 0,
-    /* flush with bar top */ 100% 0,
-    /* top-right tip */ 0 50%,
-    /* inward notch middle */ 100% 100%,
-    /* bottom-right tip */ 0 100% /* flush with bar bottom */
-  );
+  clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
 }
 
 #three > .navbar > p {
   font-size: 1.2rem;
 }
-
 #three > .navbar > span {
   font-size: 1.5rem;
   font-weight: bold;
@@ -449,25 +397,11 @@ body {
 
 #three > .products > img {
   width: 20vw;
-}
-
-#three > .navbar {
   transition: transform 0.3s ease;
-  transform-origin: center;
-  z-index: 2;
-}
-
-#three > .products img {
-  transition: transform 0.3s ease;
-  display: block; /* avoids inline-gap nits */
+  display: block;
   will-change: transform;
 }
-#three > .products img:hover {
-  transform: scale(1.2);
-}
-
-/* scale navbar when any product image is hovered */
-#three:has(.products img:hover) > .navbar {
+#three > .products > img:hover {
   transform: scale(1.2);
 }
 
@@ -497,7 +431,6 @@ body {
 #four > .text > h1 {
   font-size: 3rem;
 }
-
 #four > .text > p {
   font-size: 1.5rem;
 }
@@ -505,16 +438,13 @@ body {
 #four > .navbar {
   background-color: var(--orange2);
   color: var(--purple);
-
   height: 63px;
   width: 481px;
   margin-top: 55px;
-  transform: rotate(-4deg);
-
+  transform: rotate(-4deg) scale(var(--ribbonScale, 3)) !important; /* ← important */
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
   z-index: 0;
 }
@@ -538,19 +468,12 @@ body {
 #four > .navbar::after {
   right: -31px;
   width: 31px;
-  clip-path: polygon(
-    0 0,
-    /* flush with bar top */ 100% 0,
-    /* top-right tip */ 0 50%,
-    /* inward notch middle */ 100% 100%,
-    /* bottom-right tip */ 0 100% /* flush with bar bottom */
-  );
+  clip-path: polygon(0 0, 100% 0, 0 50%, 100% 100%, 0 100%);
 }
 
 #four > .navbar > p {
   font-size: 1.2rem;
 }
-
 #four > .navbar > span {
   font-size: 1.5rem;
   font-weight: bold;
@@ -577,36 +500,12 @@ body {
   font-weight: bold;
 
   font-size: 1.2rem;
-}
 
-#four > .products > .product > img {
-}
-
-#four > .navbar {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  z-index: 2;
-}
-
-#four > .products .product {
   transition: transform 0.3s ease;
   will-change: transform;
-  /* optional: make the whole card a hover target */
   cursor: pointer;
 }
-#four > .products .product:hover {
-  transform: scale(1.2);
-}
-
-/* scale navbar when any card or its img/text is hovered */
-#four:has(.products .product:hover),
-#four:has(.products .product img:hover),
-#four:has(.products .product p:hover) {
-  /* trigger */
-}
-#four:has(.products .product:hover) > .navbar,
-#four:has(.products .product img:hover) > .navbar,
-#four:has(.products .product p:hover) > .navbar {
+#four > .products > .product:hover {
   transform: scale(1.2);
 }
 
