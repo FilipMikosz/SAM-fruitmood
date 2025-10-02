@@ -757,3 +757,54 @@
     transform: translateX(-50%) !important; /* keep current centered state */
   }
 }
+/* === Force MIN 2 per row on #two and #three === */
+
+/* Phones (<=576px): keep 2 columns, never 1 */
+@media (max-width: 576px), (pointer: coarse) {
+  #two > .products,
+  #three > .products {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px;
+    justify-items: center;
+  }
+}
+
+/* Undo the old "1 column @380px" rule */
+@media (max-width: 380px) {
+  #two > .products,
+  #three > .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Tablets / small laptops: 2 columns instead of stacking */
+@media (min-width: 577px) and (max-width: 1300px) {
+  /* #two was using flex-column — switch to grid 2-up */
+  #two > .products {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 24px;
+    justify-items: center;
+  }
+  #two > .products > .product {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* #three was set to 1fr — force 2-up */
+  #three > .products {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+
+  #three > .products > img {
+    width: 45vw;
+  }
+
+  #three > .navbar {
+    margin-bottom: 30px;
+  }
+}
