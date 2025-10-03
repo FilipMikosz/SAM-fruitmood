@@ -215,6 +215,32 @@ body {
   pointer-events: auto;
 }
 
+/* HERO: keep "EMOCJE W SMAKU" clear of the head on smaller laptops */
+#one > img:nth-of-type(3) {
+  /* scale down a bit as the viewport narrows */
+  height: clamp(120px, 11vw, 200px);
+  /* allow vertical nudging without affecting layout around it */
+  transform: translateY(calc(-1 * var(--emo-up, 0)));
+  z-index: 2;
+}
+
+/* Gentle lift on common laptop widths */
+@media (max-width: 1440px) and (min-width: 1201px) {
+  #one {
+    --emo-up: 2vh;
+  }
+}
+@media (max-width: 1200px) and (min-width: 993px) {
+  #one {
+    --emo-up: 2vh;
+  } /* most 13–14" laptops */
+}
+@media (max-width: 992px) and (min-width: 769px) {
+  #one {
+    --emo-up: 2vh;
+  } /* big tablets / small laptops in landscape */
+}
+
 /* two */
 
 #two {
