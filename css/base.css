@@ -396,7 +396,7 @@ body {
 }
 
 #three > .products > img {
-  width: 20vw;
+  width: 19vw;
   transition: transform 0.3s ease;
   display: block;
   will-change: transform;
@@ -506,7 +506,7 @@ body {
   cursor: pointer;
 }
 #four > .products > .product:hover {
-  transform: scale(1.2);
+  transform: scale(1.08);
 }
 
 /* five */

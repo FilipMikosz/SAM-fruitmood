@@ -550,7 +550,7 @@ body {
 }
 
 #four > .products .product:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
 }
 #four:has(.products .product:hover) > .navbar {
   transform: scale(1.2);
