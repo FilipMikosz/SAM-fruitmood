@@ -1,3 +1,10 @@
+/* === Global full-bleed sanity === */
+html,
+body {
+  margin: 0;
+  overflow-x: hidden; /* allow ribbons to overshoot without creating a scrollbar */
+}
+
 /* media */
 
 @media (max-width: 1750px) {
@@ -18,7 +25,6 @@
     display: none;
   }
 }
-/* Mobile (iPhone) → 1 per row */
 /* Mobile (iPhone) → 1 per row */
 @media (max-width: 576px) {
   .mobile-navbar {
@@ -699,47 +705,142 @@
   }
 }
 
+/* =========================
+   #SIX – Phone layout (FIX)
+   ========================= */
 @media (max-width: 576px), (pointer: coarse) {
-  /* hide decorative icons */
+  /* dekoracje off jak było */
   #six > img {
     display: none !important;
   }
 
-  /* let the section grow; no inner scrolling */
+  /* ZAMIANA height:125vh -> auto + min-height:100dvh */
   #six {
-    height: 125vh;
-    min-height: auto !important;
-    padding-bottom: 32px;
+    height: auto; /* pozwól rosnąć tyle, ile potrzeba */
+    min-height: 100dvh; /* pełny ekran z dynamicznym paskiem iOS */
+    padding: 16px 0 64px; /* więcej dołu, żeby social wszedł komfortowo */
     box-sizing: border-box;
+    overflow: visible; /* nic nie ucina */
+    position: relative;
   }
 
-  /* comfy padding so text doesn't touch edges */
+  /* upewnij się, że treść jest nad ewentualnymi „wstążkami” w tle */
+  #six .container,
+  #six .contact {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Jeżeli masz obrócone pasy w tle, trzymaj je niżej */
+  #six .ribbon,
+  #six .stripe,
+  #six [class*="ribbon"],
+  #six [class*="stripe"],
+  #six [style*="rotate"],
+  #six [data-stripe],
+  #six [data-ribbon] {
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* siatka list sklepów – bez zmian funkcjonalnych */
   #six > .container .container-2 {
     padding: 14px 16px;
   }
-
-  /* EXACTLY two columns, auto height */
   #six > .container > .container-2 > .text {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 in a row */
-    gap: 8px 20px; /* row / column gap */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 20px;
     justify-items: start;
     align-items: start;
     padding: 0 10px;
-
     font-weight: 500;
     font-size: clamp(14px, 4vw, 16px);
     line-height: 1.35;
-
-    /* remove any fixed height! */
     height: auto;
   }
-
-  /* make long names wrap inside their cells */
   #six > .container > .container-2 > .text p {
     margin: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  /* social – niech się ładnie mieszczą */
+  #six .contact {
+    text-align: center;
+    padding: 8px 16px 0;
+  }
+  #six .contact .social {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+  }
+  #six .contact .social img {
+    width: 70px;
+    height: auto;
+    display: block;
+  }
+}
+
+/* =========================
+   #SIX – Tablet & small laptop (mirror phone behavior + full bleed)
+   ========================= */
+@media (min-width: 577px) and (max-width: 1550px) {
+  /* Section must contain rotated bars: give it breathing room and hide overflow edges */
+  #six {
+    position: relative;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-bottom: 380px; /* extra bottom space so slanted bars never get clipped */
+    box-sizing: border-box;
+    overflow: hidden; /* hide any diagonal bleed beyond the section */
+  }
+
+  #six > .container .container-2 {
+    padding: 16px 24px;
+  }
+
+  /* Keep exactly two columns with wrapping and auto height */
+  #six > .container > .container-2 > .text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+    justify-items: start;
+    align-items: start;
+    padding: 0 12px;
+
+    font-weight: 500;
+    font-size: clamp(14px, 2.2vw, 18px);
+    line-height: 1.4;
+
+    height: auto !important;
+  }
+
+  #six > .container > .container-2 > .text p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    margin: 0 50px;
+  }
+
+  /* --- Full-bleed helper for slanted color bars inside #six ---
+     This catches typical "ribbon/stripe" elements without changing HTML.
+     It oversizes them to 120vw and centers them so rotated bars always cover width. */
+  #six .ribbon,
+  #six .stripe,
+  #six [class*="ribbon"],
+  #six [class*="stripe"],
+  #six [style*="rotate"],
+  #six [data-stripe],
+  #six [data-ribbon] {
+    position: relative;
+    left: 50%;
+    width: 120vw; /* overshoot to cover corners after rotation */
+    max-width: none;
+    transform: translateX(-50%); /* keep centered after oversizing */
+    will-change: transform;
   }
 }
 
@@ -757,6 +858,7 @@
     transform: translateX(-50%) !important; /* keep current centered state */
   }
 }
+
 /* === Force MIN 2 per row on #two and #three === */
 
 /* Phones (<=576px): keep 2 columns, never 1 */
