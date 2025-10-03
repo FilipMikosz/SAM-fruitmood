@@ -537,7 +537,7 @@ body {
 #five > .products {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 5vh;
+  gap: 0 150px;
 
   width: 100%; /* let it shrink */
   max-width: 1200px; /* center block width */
@@ -547,7 +547,7 @@ body {
 }
 
 #five > .products > img {
-  height: 40vh;
+  height: 43vh;
 }
 
 /* six */

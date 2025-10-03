@@ -910,3 +910,33 @@ body {
     margin-bottom: 30px;
   }
 }
+
+/* =========================
+   MOBILE: global "no-animations" (keep hamburger & menu)
+   ========================= */
+@media (max-width: 576px), (pointer: coarse) {
+  /* 1) Wyłącz wszystko domyślnie */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* 2) Włącz z powrotem tylko to, co potrzeba */
+  /* Hamburger bars */
+  .container-hamburger .bar1,
+  .container-hamburger .bar2,
+  .container-hamburger .bar3 {
+    transition: 0.4s; /* obrót i zanikanie środkowej kreski */
+  }
+
+  /* Panel mobilnego menu (przesunięcie) + backdrop (opacity) */
+  .mobile-menu {
+    transition: opacity 200ms ease;
+  }
+  .mobile-menu__panel {
+    transition: transform 220ms ease;
+  }
+}
