@@ -36,7 +36,7 @@ body {
   width: 576px;
   height: 104px;
 
-  margin-top: 26px;
+  margin-top: 0px;
   margin-bottom: 20px;
 }
 
@@ -45,14 +45,15 @@ body {
   height: 625px;
 
   position: absolute;
-  bottom: 35px;
+  bottom: 0px;
 }
 
 #one > img:nth-of-type(3) {
-  margin-top: 10px;
-  height: 200px;
+  /* margin-top: 10px; */
+  /* height: 200px; */
+  height: 0rem;
   z-index: 1;
-  transition: transform 0.3s ease; /* ładne płynne przejście */
+  transition: transform 0.3s ease;
 }
 
 #one > img:nth-of-type(3):hover {
@@ -239,6 +240,11 @@ body {
   #one {
     --emo-up: 2vh;
   } /* big tablets / small laptops in landscape */
+}
+
+/* Sticker: always below navbar + don't steal hover/clicks */
+#one > img:nth-of-type(3) {
+  z-index: 0 !important; /* lower than navbar/dropdown */
 }
 
 /* two */
